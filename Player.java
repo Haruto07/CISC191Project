@@ -4,12 +4,18 @@ import java.util.*;
 
 public class Player {
     private String name;
-    private String affinity;      // Fire, Water, or Earth
+    private String affinity;     
     private int health;
     private int mana;
     private Deck deck;
     private List<Card> hand = new ArrayList<>();
 
+    /**
+     * Purpose: Constructor for the Player class
+     * @param name name of the player
+     * @param affinity element affinity of the player
+     * @param deck deck of cards for the player
+     */
     public Player(String name, String affinity, Deck deck) {
         this.name = name;
         this.affinity = affinity;
@@ -18,10 +24,16 @@ public class Player {
         this.deck   = deck;
     }
 
+    /**
+     * Purpose: Method to draw a starting hand of 5 cards from the deck
+     */
     public void drawStartingHand() {
         for (int i = 0; i < 5; i++) drawCard();
     }
 
+    /**
+     * Purpose: Method to draw a card from the deck and add it to the hand
+     */
     public void drawCard() {
         try {
             Card c = deck.draw();
@@ -31,6 +43,11 @@ public class Player {
         }
     }
 
+    /**
+     * Purpose: Method to play a card from the hand
+     * @param idx index of the card in the hand
+     * @param opponent opponent player
+     */
     public void playCard(int idx, Player opponent) {
         try {
             if (idx < 0 || idx >= hand.size())
@@ -43,17 +60,34 @@ public class Player {
         }
     }
 
-    public void takeDamage(int dmg) {
+    /**
+     * Purpose: Method to discard a card from the hand
+     * @param idx index of the card in the hand
+     */
+    public  void takeDamage(int dmg) {
         health = Math.max(0, health - dmg);
     }
 
+    /**
+     * Purpose: Method to heal the player
+     * @param amt amount of health to restore
+     */
     public void heal(int amt) {
         health = Math.min(100, health + amt);
     }
 
-    public boolean isDefeated() { return health <= 0; }
+    /**
+     * Purpose: Method to check if the player is defeated
+     * @return true if the player is defeated, false otherwise
+     */
+    public boolean isDefeated() { 
+        return health <= 0; 
+    }
 
-    // --- file I/O for profiles & logs ---
+    /**
+     * Purpose: Method to save the player's profile to a file
+     * @param filename name of the file to save to
+     */
     public void saveProfile(String filename) throws IOException {
         try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
             pw.println(name);
@@ -62,6 +96,13 @@ public class Player {
             pw.println(mana);
         }
     }
+
+    /**
+     * Purpose: Method to load a player's profile from a file
+     * @param filename name of the file to load from
+     * @param deck deck of cards for the player
+     * @return a Player object with the loaded profile
+     */
     public static Player loadProfile(String filename, Deck deck) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String n = br.readLine();
@@ -73,12 +114,59 @@ public class Player {
             return p;
         }
     }
-    // ---------------
-    public String getName()       { return name; }
-    public String getAffinity()   { return affinity; }
-    public int    getHealth()     { return health; }
-    public int    getMana()       { return mana; }
-    public List<Card> getHand()   { return hand; }
-    public int    getDeckSize()   { return deck.size(); }
-    public void   setMana(int m)  { mana = m; }
+    
+    /**
+     * Purpose: Method to get the player's name, affinity, health, mana, hand, and deck size
+     * @return the player's name, affinity, health, mana, hand, and deck size
+     */
+    public String getName(){ 
+        return name; 
+    }
+    /**
+     * Purpose: Method to get the player's affinity
+     * @return the player's affinity
+     */
+    public String getAffinity(){
+        return affinity; 
+    }
+
+    /**
+     * Purpose: Method to get the player's health
+     * @return the player's health
+     */
+    public int getHealth(){
+        return health; 
+    }
+
+    /**
+     * Purpose: Method to get the player's mana
+     * @return the player's mana
+     */
+    public int getMana(){ 
+        return mana; 
+    }
+
+    /**
+     * Purpose: Method to get the player's hand of cards
+     * @return the player's hand of cards
+     */
+    public List<Card> getHand(){ 
+        return hand; 
+    }
+
+    /**
+     * Purpose: Method to get the player's deck size
+     * @return the player's deck size
+     */
+    public int getDeckSize(){ 
+        return deck.size();
+    }
+
+    /**
+     * Purpose: Method to set the player's mana
+     * @param m mana to set
+     */
+    public void setMana(int m){ 
+        mana = m; 
+    }
 }
