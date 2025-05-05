@@ -32,7 +32,7 @@ public class GameGUI extends JFrame {
         add(handPanel2(), BorderLayout.CENTER);
         add(bottomBar(), BorderLayout.SOUTH);
     }
-    private JPanel topBar() {
+    public JPanel topBar() {
         JPanel p = new JPanel();
         p.add(new JLabel(p2.getName()));
         p.add(hp2);
@@ -40,7 +40,7 @@ public class GameGUI extends JFrame {
         p.add(deck2);
         return p;
     }
-    private JScrollPane handPanel2() {
+    public JScrollPane handPanel2() {
         handPanel2.setLayout(new FlowLayout());
         refreshHand(p2, handPanel2);
         JScrollPane sp = new JScrollPane(handPanel2);
@@ -48,7 +48,7 @@ public class GameGUI extends JFrame {
         return sp;
     }
 
-    private JPanel bottomBar() {
+    public JPanel bottomBar() {
         JPanel p = new JPanel(new BorderLayout());
         // p1 stats & hand
         JPanel stats = new JPanel();
@@ -74,7 +74,7 @@ public class GameGUI extends JFrame {
         return p;
     }
 
-    private void refreshHand(Player pl, JPanel panel) {
+    public void refreshHand(Player pl, JPanel panel) {
         panel.removeAll();
         for (int i = 0; i < pl.getHand().size(); i++) {
             Card c = pl.getHand().get(i);
@@ -90,7 +90,7 @@ public class GameGUI extends JFrame {
         panel.repaint();
     }
 
-    private void updateAll() {
+    public void updateAll() {
         hp1.setValue(p1.getHealth());
         hp2.setValue(p2.getHealth());
         mana1.setText("Mana: " + p1.getMana());
@@ -102,7 +102,7 @@ public class GameGUI extends JFrame {
         GameEngine.checkWin();
     }
 
-    private void endTurn() {
+    public void endTurn() {
         // simple: refill mana & draw
         Player cur = p1; Player opp = p2;
         // swap for p2 turn
