@@ -16,7 +16,9 @@ public class AIPlayer extends Thread {
         try {
             Thread.sleep(1000);  // thinking...
             // draw if low cards
-            if (self.getHand().isEmpty()) self.drawCard();
+            if (self.getHand().isEmpty()) {
+                self.drawCard();
+            }
             // play first playable
             for (int i = 0; i < self.getHand().size(); i++) {
                 Card c = self.getHand().get(i);
