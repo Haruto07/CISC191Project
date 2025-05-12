@@ -15,7 +15,8 @@ public class GameGUI extends JFrame {
      */
     public GameGUI(Player p1, Player p2) {
 
-        this.p1 = p1; this.p2 = p2;
+        this.p1 = p1; 
+        this.p2 = p2;
         this.singlePlayer = p2.getName().equals("Computer");
 
         setTitle("Card Clash");
@@ -127,12 +128,16 @@ public class GameGUI extends JFrame {
      * Purpose: Method to end the turn
      */
     public void endTurn() {
-        Player cur = p1; Player opp = p2;
-        p1.setMana(10); p1.drawCard();
+        Player cur = p1; 
+        Player opp = p2;
+        p1.setMana(10); 
+        p1.drawCard();
         if (singlePlayer) {
             new AIPlayer(p2, p1, this).start();
-        } else {
-            p2.setMana(10); p2.drawCard();
+        } 
+        else {
+            p2.setMana(10); 
+            p2.drawCard();
         }
         updateAll();
     }

@@ -1,4 +1,3 @@
-// AttackCard.java
 public class AttackCard extends Card {
     private int damage;
 

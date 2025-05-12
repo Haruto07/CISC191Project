@@ -1,4 +1,3 @@
-// CardEffect.java
 public class CardEffect {
     public enum Type { DRAW, BUFF, DEBUFF }
     private Type type;

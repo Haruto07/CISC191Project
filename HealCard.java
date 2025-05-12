@@ -1,4 +1,3 @@
-// HealCard.java
 public class HealCard extends Card {
     private int healAmount;
 

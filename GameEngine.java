@@ -20,12 +20,11 @@ public class GameEngine {
     }
 
     public static void main(String[] args) {
-        // load definitions
-        var cards = CardLoader.loadCards("cards.txt");
+        java.util.List<Card> cards = CardLoader.loadCards("cards.txt");
         Deck d1 = new Deck(cards), d2 = new Deck(cards);
 
-        player1 = new Player("Alice", "Fire", d1);
-        player2 = new Player("Computer", "Water", d2);
+        player1 = new Player("P1", "Fire", d1);
+        player2 = new Player("P2", "Water", d2);
 
         player1.drawStartingHand();
         player2.drawStartingHand();
