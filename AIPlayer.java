@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.util.*;
 
 public class AIPlayer extends Thread {
     private Player self, opponent;

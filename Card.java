@@ -46,4 +46,7 @@ public abstract class Card implements Playable {
     public int getManaCost() {
         return manaCost;
     }
+
+    /** Returns a short description of what this card does */
+    public abstract String getDescription();
 }

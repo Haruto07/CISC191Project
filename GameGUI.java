@@ -1,7 +1,5 @@
-// GameGUI.java
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 public class GameGUI extends JFrame {
     private Player p1, p2;
@@ -9,12 +7,14 @@ public class GameGUI extends JFrame {
     private JLabel mana1, mana2, deck1, deck2;
     private JPanel handPanel1, handPanel2;
     private boolean singlePlayer;
+
     /**
      * Purpose: Constructor for the GameGUI class
      * @param p1 player 1
      * @param p2 player 2
      */
     public GameGUI(Player p1, Player p2) {
+
         this.p1 = p1; this.p2 = p2;
         this.singlePlayer = p2.getName().equals("Computer");
 
@@ -23,7 +23,6 @@ public class GameGUI extends JFrame {
         setSize(800, 600);
         setLayout(new BorderLayout());
 
-        // top: opponent
         hp2 = new JProgressBar(0, 100); hp2.setValue(p2.getHealth());
         mana2 = new JLabel("Mana: " + p2.getMana());
         deck2 = new JLabel("Deck: " + p2.getDeckSize());
@@ -32,6 +31,11 @@ public class GameGUI extends JFrame {
         add(handPanel2(), BorderLayout.CENTER);
         add(bottomBar(), BorderLayout.SOUTH);
     }
+
+    /**
+     * Purpose: Method to create the top bar of the GUI
+     * @return the top bar panel
+     */
     public JPanel topBar() {
         JPanel p = new JPanel();
         p.add(new JLabel(p2.getName()));
@@ -40,6 +44,11 @@ public class GameGUI extends JFrame {
         p.add(deck2);
         return p;
     }
+
+    /**
+     * Purpose: Method to create the hand panel for player 2
+     * @return the hand panel for player 2
+     */
     public JScrollPane handPanel2() {
         handPanel2.setLayout(new FlowLayout());
         refreshHand(p2, handPanel2);
@@ -48,9 +57,12 @@ public class GameGUI extends JFrame {
         return sp;
     }
 
+    /**
+     * Purpose: Method to create the bottom bar of the GUI
+     * @return the bottom bar panel
+     */
     public JPanel bottomBar() {
         JPanel p = new JPanel(new BorderLayout());
-        // p1 stats & hand
         JPanel stats = new JPanel();
         hp1 = new JProgressBar(0, 100); hp1.setValue(p1.getHealth());
         mana1 = new JLabel("Mana: " + p1.getMana());
@@ -74,11 +86,17 @@ public class GameGUI extends JFrame {
         return p;
     }
 
+    /**
+     * Purpose: Method to refresh the hand of a player
+     * @param pl the player
+     * @param panel the panel to refresh
+     */
     public void refreshHand(Player pl, JPanel panel) {
         panel.removeAll();
         for (int i = 0; i < pl.getHand().size(); i++) {
             Card c = pl.getHand().get(i);
             JButton btn = new JButton(c.getName() + " (" + c.getManaCost() + ")");
+            btn.setToolTipText(c.getDescription());
             int idx = i;
             btn.addActionListener(e -> {
                 pl.playCard(idx, pl == p1 ? p2 : p1);
@@ -90,6 +108,9 @@ public class GameGUI extends JFrame {
         panel.repaint();
     }
 
+    /**
+     * Purpose: Method to update the GUI
+     */
     public void updateAll() {
         hp1.setValue(p1.getHealth());
         hp2.setValue(p2.getHealth());
@@ -102,13 +123,13 @@ public class GameGUI extends JFrame {
         GameEngine.checkWin();
     }
 
+    /**
+     * Purpose: Method to end the turn
+     */
     public void endTurn() {
-        // simple: refill mana & draw
         Player cur = p1; Player opp = p2;
-        // swap for p2 turn
         p1.setMana(10); p1.drawCard();
         if (singlePlayer) {
-            // AI move on separate thread
             new AIPlayer(p2, p1, this).start();
         } else {
             p2.setMana(10); p2.drawCard();

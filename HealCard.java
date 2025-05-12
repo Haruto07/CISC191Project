@@ -15,6 +15,15 @@ public class HealCard extends Card {
     }
 
     /**
+     * Purpose: Method to get the description of the card
+     * @return the description of the card
+     */
+    @Override
+    public String getDescription() {
+        return "Heal " + healAmount + " health.";
+    }
+
+    /**
      * Purpose: Method to play the effect of the card
      * @param self the player playing the card
      * @param opponent the opponent player
