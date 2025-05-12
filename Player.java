@@ -20,8 +20,8 @@ public class Player {
         this.name = name;
         this.affinity = affinity;
         this.health = 100;
-        this.mana   = 10;
-        this.deck   = deck;
+        this.mana = 10;
+        this.deck = deck;
     }
 
     /**

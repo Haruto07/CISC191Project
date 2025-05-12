@@ -5,12 +5,22 @@ public class AIPlayer extends Thread {
     private Player self, opponent;
     private GameGUI gui;
 
+    /**
+     * Purpose: Constructor for the AIPlayer class
+     * @param self the AI player
+     * @param opponent the opponent player
+     * @param gui the game GUI
+     */
     public AIPlayer(Player self, Player opponent, GameGUI gui) {
         this.self = self;
         this.opponent = opponent;
         this.gui = gui;
     }
 
+    /**
+     * Purpose: Method to run the AI player thread
+     * @throws InterruptedException if the thread is interrupted
+     */
     @Override
     public void run() {
         try {
@@ -31,7 +41,8 @@ public class AIPlayer extends Thread {
             self.setMana(10);
             self.drawCard();
             SwingUtilities.invokeLater(() -> gui.updateAll());
-        } catch (InterruptedException ex) {
+        } 
+        catch (InterruptedException ex) {
             ex.printStackTrace();
         }
     }

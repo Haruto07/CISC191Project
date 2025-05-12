@@ -1,0 +1,21 @@
+ATTACK,Fireball,Fire,3,20
+ATTACK,Lava Burst,Fire,5,35
+ATTACK,Ember,Fire,1,8
+HEAL,Flame Renewal,Fire,2,12
+HEAL,Smoldering Embrace,Fire,4,25
+SPECIAL,Inferno Surge,Fire,5,DEBUFF,2,Reduce opponent mana by 2
+SPECIAL,Flame Shield,Fire,3,BUFF,2,Gain 2 extra mana
+ATTACK,Tidal Wave,Water,4,30
+ATTACK,Water Bolt,Water,2,15
+ATTACK,Drizzle,Water,1,6
+HEAL,Healing Waters,Water,2,15
+HEAL,Misty Recovery,Water,3,20
+SPECIAL,Ocean's Blessing,Water,3,DRAW,2,Draw 2 cards
+SPECIAL,Water Surge,Water,4,BUFF,3,Gain 3 extra mana
+ATTACK,Rock Smash,Earth,3,22
+ATTACK,Earthen Spear,Earth,2,14
+ATTACK,Quake,Earth,5,40
+HEAL,Stone Skin,Earth,2,10
+HEAL,Nature's Resilience,Earth,4,30
+SPECIAL,Earth's Grasp,Earth,3,DEBUFF,1,Opponent loses 1 mana
+SPECIAL,Earth Ward,Earth,5,BUFF,4,Gain 4 extra mana
