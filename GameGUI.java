@@ -128,8 +128,6 @@ public class GameGUI extends JFrame {
      * Purpose: Method to end the turn
      */
     public void endTurn() {
-        Player cur = p1; 
-        Player opp = p2;
         p1.setMana(10); 
         p1.drawCard();
         if (singlePlayer) {
