@@ -26,7 +26,7 @@ public class AIPlayer extends Thread {
             Thread.sleep(1000);  // thinking...
             // draw if low cards
             if (self.getHand().isEmpty()) {
-                self.drawCard();
+                self.drawCardsRecursively(1);
             }
             // play first playable
             for (int i = 0; i < self.getHand().size(); i++) {
@@ -38,7 +38,7 @@ public class AIPlayer extends Thread {
             }
             // end turn: refill & draw
             self.setMana(10);
-            self.drawCard();
+            self.drawCardsRecursively(1);
             SwingUtilities.invokeLater(() -> gui.updateAll());
         } 
         catch (InterruptedException ex) {

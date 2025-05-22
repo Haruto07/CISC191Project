@@ -27,19 +27,26 @@ public class Player {
      * Purpose: Method to draw a starting hand of 5 cards from the deck
      */
     public void drawStartingHand() {
-        for (int i = 0; i < 5; i++) drawCard();
+        drawCardsRecursively(5);
     }
 
     /**
-     * Purpose: Method to draw a card from the deck and add it to the hand
+     * Recursively draws n cards one at a time.
+     * Base case: stop when n <= 0 or deck is empty.
      */
-    public void drawCard() {
+    public void drawCardsRecursively(int n) {
+        if (n <= 0) {
+            return;
+        }
         try {
             Card c = deck.draw();
             hand.add(c);
-        } catch (EmptyDeckException e) {
+        } 
+        catch (EmptyDeckException e) {
             System.out.println(name + ": " + e.getMessage());
+            return;        
         }
+        drawCardsRecursively(n - 1);
     }
 
     /**

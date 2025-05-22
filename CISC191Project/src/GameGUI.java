@@ -7,6 +7,7 @@ public class GameGUI extends JFrame {
     private JLabel mana1, mana2, deck1, deck2;
     private JPanel handPanel1, handPanel2;
     private boolean singlePlayer;
+    private Player currentPlayer;
 
     /**
      * Purpose: Constructor for the GameGUI class
@@ -18,6 +19,7 @@ public class GameGUI extends JFrame {
         this.p1 = p1; 
         this.p2 = p2;
         this.singlePlayer = p2.getName().equals("Computer");
+        this.currentPlayer = p1;
 
         setTitle("Card Clash");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -39,7 +41,8 @@ public class GameGUI extends JFrame {
      */
     public JPanel topBar() {
         JPanel p = new JPanel();
-        p.add(new JLabel(p2.getName()));
+        JLabel name2 = new JLabel(p2.getName() + " (" + p2.getAffinity() + ")");
+        p.add(name2);
         p.add(hp2);
         p.add(mana2);
         p.add(deck2);
@@ -65,10 +68,12 @@ public class GameGUI extends JFrame {
     public JPanel bottomBar() {
         JPanel p = new JPanel(new BorderLayout());
         JPanel stats = new JPanel();
+
         hp1 = new JProgressBar(0, 100); hp1.setValue(p1.getHealth());
         mana1 = new JLabel("Mana: " + p1.getMana());
         deck1 = new JLabel("Deck: " + p1.getDeckSize());
-        stats.add(new JLabel(p1.getName()));
+        JLabel name1 = new JLabel(p1.getName() + " (" + p1.getAffinity() + ")");
+        stats.add(name1);
         stats.add(hp1);
         stats.add(mana1);
         stats.add(deck1);
@@ -98,6 +103,7 @@ public class GameGUI extends JFrame {
             Card c = pl.getHand().get(i);
             JButton btn = new JButton(c.getName() + " (" + c.getManaCost() + ")");
             btn.setToolTipText(c.getDescription());
+            btn.setEnabled(pl == currentPlayer);
             int idx = i;
             btn.addActionListener(e -> {
                 pl.playCard(idx, pl == p1 ? p2 : p1);
@@ -128,14 +134,20 @@ public class GameGUI extends JFrame {
      * Purpose: Method to end the turn
      */
     public void endTurn() {
-        p1.setMana(10); 
-        p1.drawCard();
-        if (singlePlayer) {
-            new AIPlayer(p2, p1, this).start();
+        if (currentPlayer == p1) {
+            if (singlePlayer) {
+                new AIPlayer(p2, p1, this).start();
+            } 
+            else {
+                currentPlayer = p2;
+                currentPlayer.setMana(10);
+                currentPlayer.drawCardsRecursively(1);
+            }
         } 
         else {
-            p2.setMana(10); 
-            p2.drawCard();
+            currentPlayer = p1;
+            currentPlayer.setMana(10);
+            currentPlayer.drawCardsRecursively(1);
         }
         updateAll();
     }

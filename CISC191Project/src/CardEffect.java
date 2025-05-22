@@ -24,7 +24,7 @@ public class CardEffect {
     public void apply(Player self, Player opponent) {
         switch (type) {
             case DRAW:
-                for (int i = 0; i < value; i++) self.drawCard();
+                for (int i = 0; i < value; i++) self.drawCardsRecursively(value);
                 break;
             case BUFF:
                 self.setMana(self.getMana() + value);
