@@ -21,7 +21,7 @@ public class GameEngine {
     }
 
     public static void main(String[] args) {
-        java.util.List<Card> cards = CardLoader.loadCards("cards.txt");
+        java.util.List<Card> cards = CardLoader.loadCards("CISC191Project//src//cards.txt");
         Deck d1 = new Deck(cards), d2 = new Deck(cards);
 
         player1 = new Player("P1", "Fire", d1);
