@@ -23,11 +23,29 @@ public class CardLoader {
                         list.add(new HealCard(p[1], p[2], Integer.parseInt(p[3]), Integer.parseInt(p[4])));
                         break;
                     case "SPECIAL":
-                        CardEffect.Type t = CardEffect.Type.valueOf(p[4]);
-                        int v = Integer.parseInt(p[5]);
-                        String desc = p.length>6 ? p[6] : "Special";
-                        list.add(new SpecialCard(p[1], p[2], Integer.parseInt(p[3]), new CardEffect(t, v, desc)));
-                        break;
+                        String et = p[4].toUpperCase();
+                        CardEffect.Type t;
+                        switch (et) {
+                        case "DRAW":
+                            t = CardEffect.Type.DRAW;
+                            break;
+                        case "DEBUFF":
+                        case "BUFF":
+                        case "DEBUFF_MANA":
+                            t = CardEffect.Type.DEBUFF_MANA;
+                            break;
+                        case "SHIELD":
+                            t = CardEffect.Type.SHIELD;
+                            break;
+                        case "BUFF_DAMAGE":
+                            t = CardEffect.Type.BUFF_DAMAGE;
+                            break;
+                        case "DEBUFF_INCOMING":
+                            t = CardEffect.Type.DEBUFF_INCOMING;
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Unknown effect type: " + et);
+                        }
                 }
             }
         } catch (IOException e) {

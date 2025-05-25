@@ -1,7 +1,9 @@
 public class CardEffect {
-    public enum Type { DRAW, BUFF, DEBUFF }
+    public enum Type { DRAW,DEBUFF_MANA,SHIELD,BUFF_DAMAGE,DEBUFF_INCOMING } 
+
     private Type type;
     private int value;
+    private double factor;
     private String description;
 
     /**
@@ -13,6 +15,7 @@ public class CardEffect {
     public CardEffect(Type type, int value, String description) {
         this.type = type;
         this.value = value;
+        this.factor = 1.0;
         this.description = description;
     }
 
@@ -22,15 +25,21 @@ public class CardEffect {
      * @param opponent the opponent player
      */
     public void apply(Player self, Player opponent) {
-        switch (type) {
+         switch (type) {
             case DRAW:
-                for (int i = 0; i < value; i++) self.drawCardsRecursively(value);
+                self.drawCardsRecursively(value);
                 break;
-            case BUFF:
-                self.setMana(self.getMana() + value);
-                break;
-            case DEBUFF:
+            case DEBUFF_MANA:
                 opponent.setMana(Math.max(0, opponent.getMana() - value));
+                break;
+            case SHIELD:
+                self.activateShield();
+                break;
+            case BUFF_DAMAGE:
+                self.buffOutgoing(factor);
+                break;
+            case DEBUFF_INCOMING:
+                opponent.debuffIncoming(factor);
                 break;
         }
     }

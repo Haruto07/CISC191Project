@@ -6,6 +6,9 @@ public class Player {
     private String affinity;     
     private int health;
     private int mana;
+    private boolean shieldActive;                          
+    private double outgoingMultiplier;           
+    private double incomingMultiplier;           
     private Deck deck;
     private List<Card> hand = new ArrayList<>();
 
@@ -20,6 +23,9 @@ public class Player {
         this.affinity = affinity;
         this.health = 100;
         this.mana = 10;
+        this.shieldActive = false;
+        this.outgoingMultiplier = 1.0;
+        this.incomingMultiplier = 1.0;
         this.deck = deck;
     }
 
@@ -70,10 +76,14 @@ public class Player {
      * Purpose: Method to discard a card from the hand
      * @param idx index of the card in the hand
      */
-    public  void takeDamage(int dmg) {
-        health = Math.max(0, health - dmg);
+     public void takeDamage(int dmg) {
+        if (shieldActive) {
+            shieldActive = false;  
+            return;
+        }
+        int adjusted = (int)(dmg * incomingMultiplier);
+        health = Math.max(0, health - adjusted);
     }
-
     /**
      * Purpose: Method to heal the player
      * @param amt amount of health to restore
@@ -91,36 +101,28 @@ public class Player {
     }
 
     /**
-     * Purpose: Method to save the player's profile to a file
-     * @param filename name of the file to save to
+     * Purpose: Method to add a shield to the player
      */
-    public void saveProfile(String filename) throws IOException {
-        try (PrintWriter pw = new PrintWriter(new FileWriter(filename))) {
-            pw.println(name);
-            pw.println(affinity);
-            pw.println(health);
-            pw.println(mana);
-        }
+    public void activateShield() {
+        shieldActive = true;
     }
 
     /**
-     * Purpose: Method to load a player's profile from a file
-     * @param filename name of the file to load from
-     * @param deck deck of cards for the player
-     * @return a Player object with the loaded profile
+     * Purpose: Method to set the player's outgoing damage multiplier
+     * @param multiplier multiplier to set
      */
-    public static Player loadProfile(String filename, Deck deck) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String n = br.readLine();
-            String a = br.readLine();
-            int h = Integer.parseInt(br.readLine());
-            int m = Integer.parseInt(br.readLine());
-            Player p = new Player(n, a, deck);
-            p.health = h; p.mana = m;
-            return p;
-        }
+    public void buffOutgoing(double factor) {
+        outgoingMultiplier *= factor;
     }
-    
+
+    /**
+     * Purpose: Method to debuff incoming damage to this player
+     * @param factor the factor by which to reduce incoming damage
+     */
+    public void debuffIncoming(double factor) {
+        incomingMultiplier *= factor;
+    }
+
     /**
      * Purpose: Method to get the player's name, affinity, health, mana, hand, and deck size
      * @return the player's name, affinity, health, mana, hand, and deck size
@@ -166,6 +168,30 @@ public class Player {
      */
     public int getDeckSize(){ 
         return deck.size();
+    }
+
+    /**
+     * Purpose: Method to check if the player has an active shield
+     * @return true if the player has an active shield, false otherwise
+     */
+    public boolean hasShield() { 
+        return shieldActive; 
+    }
+
+    /**
+     * Purpose: Method to get the player's outgoing damage multiplier
+     * @return the player's outgoing damage multiplier
+     */
+    public double getOutgoingMultiplier() { 
+        return outgoingMultiplier;
+    }
+
+    /**
+     * Purpose: Method to get the player's incoming damage multiplier
+     * @return the player's incoming damage multiplier
+     */
+    public double getIncomingMultiplier() { 
+        return incomingMultiplier; 
     }
 
     /**

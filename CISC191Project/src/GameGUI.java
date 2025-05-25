@@ -102,7 +102,7 @@ public class GameGUI extends JFrame {
         for (int i = 0; i < pl.getHand().size(); i++) {
             Card c = pl.getHand().get(i);
             JButton btn = new JButton(c.getName() + " (" + c.getManaCost() + ")");
-            btn.setToolTipText(c.getDescription());
+            btn.setToolTipText(c.getDescription() + " (Element: " + c.getElementType() + ")");
             btn.setEnabled(pl == currentPlayer);
             int idx = i;
             btn.addActionListener(e -> {
