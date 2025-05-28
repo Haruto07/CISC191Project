@@ -19,6 +19,12 @@ public class CardEffect {
         this.description = description;
     }
 
+    public CardEffect(Type type, double value, String description) {
+        this.type = type;
+        this.factor = value;
+        this.description = description;
+    }
+
     /**
      * Purpose: Method to apply the effect to the player and opponent
      * @param self the player playing the card

@@ -34,19 +34,19 @@ public class AttackCard extends Card {
             throw new InvalidPlayException("Not enough mana to play " + name);
         self.setMana(self.getMana() - manaCost);
 
-         double mult = typeMultiplier(this.elementType, opponent.getAffinity());
+        double typeMult = typeMultiplier(this.elementType, opponent.getAffinity());
 
-        if (this.elementType.equals(self.getAffinity())) {
-            mult *= 1.25;
-        }
-        
-        mult *= self.getOutgoingMultiplier();
+        double affinityMult = this.elementType.equals(self.getAffinity()) ? 1.25 : 1.0;
 
-        int finalDmg = (int)(damage * mult);
-        opponent.takeDamage(finalDmg);
-        System.out.println(name + " dealt " + finalDmg + " damage!");
+        double outMult = self.getOutgoingMultiplier();
+
+        double inMult = opponent.getIncomingMultiplier();
+
+        double raw = damage * typeMult * affinityMult * outMult * inMult;
+        int dealt = (int)Math.round(raw);
+
+        opponent.takeDamage(dealt);
     }
-
     /**
      * Purpose: Method to get the type multiplier based on the attack and defense types
      * @param atk attack type

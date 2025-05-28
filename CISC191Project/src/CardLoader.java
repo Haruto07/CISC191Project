@@ -12,7 +12,8 @@ public class CardLoader {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while((line = br.readLine()) != null) {
-                if (line.isEmpty()) {
+                line = line.trim();
+                if (line.isEmpty() || line.startsWith("#")) {
                     continue;
                 }
                 // format: type,name,element,mana,value,desc?
@@ -53,7 +54,7 @@ public class CardLoader {
                         CardEffect effect;
                         if (t== CardEffect.Type.BUFF_DAMAGE || t == CardEffect.Type.DEBUFF_INCOMING) {
                             double factor = Double.parseDouble(p[5]);
-                            effect = new CardEffect(t, (int)factor, desc);
+                            effect = new CardEffect(t,factor, desc);
                         } 
                         else {
                             int val = Integer.parseInt(p[5]);

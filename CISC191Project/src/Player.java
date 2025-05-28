@@ -76,14 +76,21 @@ public class Player {
      * Purpose: Method to discard a card from the hand
      * @param idx index of the card in the hand
      */
-     public void takeDamage(int dmg) {
-        if (shieldActive) {
-            shieldActive = false;  
-            return;
-        }
-        int adjusted = (int)(dmg * incomingMultiplier);
-        health = Math.max(0, health - adjusted);
+    public void takeDamage(int dmg) {
+    if (shieldActive) {
+        shieldActive = false;
+        System.out.println(name + " blocked all damage with a shield!");
+        return;
     }
+
+    // We already baked in incomingMultiplier on the caller side,
+    // but let’s also log and then reset it here.
+    // apply damage
+    health = Math.max(0, health - dmg);
+    // then reset for next turn
+    incomingMultiplier = 1.0;
+    System.out.printf("%s now has %d health%n", name, health);
+}
     /**
      * Purpose: Method to heal the player
      * @param amt amount of health to restore
@@ -121,6 +128,12 @@ public class Player {
      */
     public void debuffIncoming(double factor) {
         incomingMultiplier *= factor;
+    }
+
+    public void resetOutgoingMultiplier() {
+        if (outgoingMultiplier != 1.0) {
+            outgoingMultiplier = 1.0;
+        }
     }
 
     /**

@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 public class GameGUI extends JFrame {
     private Player p1, p2;
-    private JProgressBar hp1, hp2;
+    private JProgressBar hpBar1, hpBar2;
+    private JLabel hpLabel1, hpLabel2;
     private JLabel mana1, mana2, deck1, deck2;
     private JPanel handPanel1, handPanel2;
     private boolean singlePlayer;
@@ -32,8 +33,7 @@ public class GameGUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800, 600);
         setLayout(new BorderLayout());
-        
-        hp2 = new JProgressBar(0, 100); hp2.setValue(p2.getHealth());
+
         mana2 = new JLabel("Mana: " + p2.getMana());
         deck2 = new JLabel("Deck: " + p2.getDeckSize());
         handPanel2 = new JPanel();
@@ -46,11 +46,20 @@ public class GameGUI extends JFrame {
      * Purpose: Method to create the top bar of the GUI
      * @return the top bar panel
      */
-    public JPanel topBar() {
+    private JPanel topBar() {
         JPanel p = new JPanel();
+        p.setLayout(new FlowLayout(FlowLayout.LEFT));
+
         JLabel name2 = new JLabel(p2.getName() + " (" + p2.getAffinity() + ")");
+        hpBar2 = new JProgressBar(0, 100);
+        hpBar2.setValue(p2.getHealth());
+        hpLabel2 = new JLabel(p2.getHealth() + "/100");
+        mana2 = new JLabel("Mana: " + p2.getMana());
+        deck2 = new JLabel("Deck: " + p2.getDeckSize());
+
         p.add(name2);
-        p.add(hp2);
+        p.add(hpBar2);
+        p.add(hpLabel2);
         p.add(mana2);
         p.add(deck2);
         return p;
@@ -60,8 +69,8 @@ public class GameGUI extends JFrame {
      * Purpose: Method to create the hand panel for player 2
      * @return the hand panel for player 2
      */
-    public JScrollPane handPanel2() {
-        handPanel2.setLayout(new FlowLayout());
+    private JScrollPane handPanel2() {
+        handPanel2 = new JPanel(new FlowLayout());
         refreshHand(p2, handPanel2);
         JScrollPane sp = new JScrollPane(handPanel2);
         sp.setPreferredSize(new Dimension(780, 120));
@@ -72,16 +81,20 @@ public class GameGUI extends JFrame {
      * Purpose: Method to create the bottom bar of the GUI
      * @return the bottom bar panel
      */
-    public JPanel bottomBar() {
+    private JPanel bottomBar() {
         JPanel p = new JPanel(new BorderLayout());
-        JPanel stats = new JPanel();
+        JPanel stats = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        hp1 = new JProgressBar(0, 100); hp1.setValue(p1.getHealth());
+        JLabel name1 = new JLabel(p1.getName() + " (" + p1.getAffinity() + ")");
+        hpBar1 = new JProgressBar(0, 100);
+        hpBar1.setValue(p1.getHealth());
+        hpLabel1 = new JLabel(p1.getHealth() + "/100");
         mana1 = new JLabel("Mana: " + p1.getMana());
         deck1 = new JLabel("Deck: " + p1.getDeckSize());
-        JLabel name1 = new JLabel(p1.getName() + " (" + p1.getAffinity() + ")");
+
         stats.add(name1);
-        stats.add(hp1);
+        stats.add(hpBar1);
+        stats.add(hpLabel1);
         stats.add(mana1);
         stats.add(deck1);
 
@@ -94,7 +107,7 @@ public class GameGUI extends JFrame {
         endTurn.addActionListener(e -> endTurn());
 
         p.add(stats, BorderLayout.NORTH);
-        p.add(sp1,   BorderLayout.CENTER);
+        p.add(sp1, BorderLayout.CENTER);
         p.add(endTurn, BorderLayout.SOUTH);
         return p;
     }
@@ -108,13 +121,10 @@ public class GameGUI extends JFrame {
         panel.removeAll();
         for (int i = 0; i < pl.getHand().size(); i++) {
             Card c = pl.getHand().get(i);
-            JButton btn = new JButton(c.getName() + " (" + c.getManaCost() + ")");
-            ImageIcon icon = elementIcons.get(c.getElementType());
-            if (icon != null) {
-                btn.setIcon(icon);
-                btn.setHorizontalTextPosition(SwingConstants.CENTER);
-                btn.setVerticalTextPosition(SwingConstants.BOTTOM);
-            }
+            JButton btn = new JButton(c.getName(), elementIcons.get(c.getElementType()));
+            btn.setIconTextGap(4);
+            btn.setHorizontalTextPosition(SwingConstants.CENTER);
+            btn.setVerticalTextPosition(SwingConstants.BOTTOM);
             btn.setToolTipText(c.getDescription() + " (Element: " + c.getElementType() + ")");
             btn.setEnabled(pl == currentPlayer);
             int idx = i;
@@ -132,21 +142,28 @@ public class GameGUI extends JFrame {
      * Purpose: Method to update the GUI
      */
     public void updateAll() {
-        hp1.setValue(p1.getHealth());
-        hp2.setValue(p2.getHealth());
+        hpBar1.setValue(p1.getHealth());
+        hpLabel1.setText(p1.getHealth() + "/100");
         mana1.setText("Mana: " + p1.getMana());
-        mana2.setText("Mana: " + p2.getMana());
         deck1.setText("Deck: " + p1.getDeckSize());
+
+        hpBar2.setValue(p2.getHealth());
+        hpLabel2.setText(p2.getHealth() + "/100");
+        mana2.setText("Mana: " + p2.getMana());
         deck2.setText("Deck: " + p2.getDeckSize());
+
         refreshHand(p1, handPanel1);
         if (!singlePlayer) refreshHand(p2, handPanel2);
+
         GameEngine.checkWin();
     }
-
     /**
      * Purpose: Method to end the turn
      */
     public void endTurn() {
+        Player prev = (currentPlayer == p1) ? p1 : p2;
+        prev.resetOutgoingMultiplier();
+
         if (currentPlayer == p1) {
             if (singlePlayer) {
                 new AIPlayer(p2, p1, this).start();
