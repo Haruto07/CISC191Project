@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 
 public class GameGUI extends JFrame {
     private Player p1, p2;
@@ -8,6 +9,7 @@ public class GameGUI extends JFrame {
     private JPanel handPanel1, handPanel2;
     private boolean singlePlayer;
     private Player currentPlayer;
+    private HashMap<String, ImageIcon> elementIcons;
 
     /**
      * Purpose: Constructor for the GameGUI class
@@ -21,11 +23,16 @@ public class GameGUI extends JFrame {
         this.singlePlayer = p2.getName().equals("Computer");
         this.currentPlayer = p1;
 
+        elementIcons = new HashMap<>();
+        elementIcons.put("Fire",new ImageIcon(new ImageIcon("CISC191Project/assets/fire.png").getImage().getScaledInstance(64, 96, Image.SCALE_SMOOTH)));
+        elementIcons.put("Water",new ImageIcon(new ImageIcon("CISC191Project/assets/water.png").getImage().getScaledInstance(64, 96, Image.SCALE_SMOOTH)));
+        elementIcons.put("Earth",new ImageIcon(new ImageIcon("CISC191Project/assets/earth.png").getImage().getScaledInstance(64, 96, Image.SCALE_SMOOTH)));
+
         setTitle("Card Clash");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800, 600);
         setLayout(new BorderLayout());
-
+        
         hp2 = new JProgressBar(0, 100); hp2.setValue(p2.getHealth());
         mana2 = new JLabel("Mana: " + p2.getMana());
         deck2 = new JLabel("Deck: " + p2.getDeckSize());
@@ -102,6 +109,12 @@ public class GameGUI extends JFrame {
         for (int i = 0; i < pl.getHand().size(); i++) {
             Card c = pl.getHand().get(i);
             JButton btn = new JButton(c.getName() + " (" + c.getManaCost() + ")");
+            ImageIcon icon = elementIcons.get(c.getElementType());
+            if (icon != null) {
+                btn.setIcon(icon);
+                btn.setHorizontalTextPosition(SwingConstants.CENTER);
+                btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+            }
             btn.setToolTipText(c.getDescription() + " (Element: " + c.getElementType() + ")");
             btn.setEnabled(pl == currentPlayer);
             int idx = i;

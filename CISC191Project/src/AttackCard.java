@@ -54,8 +54,11 @@ public class AttackCard extends Card {
         }
         if (atk.equals("Fire") && def.equals("Water")
          || atk.equals("Earth") && def.equals("Fire")
-         || atk.equals("Water") && def.equals("Earth")) {
-            return 0.75;
+         || atk.equals("Water") && def.equals("Earth")
+         ||(atk.equals("Fire") && def.equals("Fire")
+         || atk.equals("Earth") && def.equals("Earth")
+         || atk.equals("Water") && def.equals("Water"))){
+            return 0.5;
         }
         return 1.0;
     }
