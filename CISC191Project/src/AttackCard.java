@@ -34,7 +34,14 @@ public class AttackCard extends Card {
             throw new InvalidPlayException("Not enough mana to play " + name);
         self.setMana(self.getMana() - manaCost);
 
-        double mult = typeMultiplier(this.elementType, opponent.getAffinity());
+         double mult = typeMultiplier(this.elementType, opponent.getAffinity());
+
+        if (this.elementType.equals(self.getAffinity())) {
+            mult *= 1.25;
+        }
+        
+        mult *= self.getOutgoingMultiplier();
+
         int finalDmg = (int)(damage * mult);
         opponent.takeDamage(finalDmg);
         System.out.println(name + " dealt " + finalDmg + " damage!");

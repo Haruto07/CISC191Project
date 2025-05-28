@@ -29,8 +29,7 @@ public class CardLoader {
                         case "DRAW":
                             t = CardEffect.Type.DRAW;
                             break;
-                        case "DEBUFF":
-                        case "BUFF":
+
                         case "DEBUFF_MANA":
                             t = CardEffect.Type.DEBUFF_MANA;
                             break;

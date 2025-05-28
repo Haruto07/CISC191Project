@@ -1,60 +1,16 @@
-ATTACK,Fireball,Fire,3,20
-ATTACK,Ember Strike,Fire,2,12
-ATTACK,Flame Shock,Fire,4,25
-ATTACK,Magma Burst,Fire,5,35
-ATTACK,Scorch,Fire,1,8
-HEAL,Flame Renewal,Fire,2,12
-HEAL,Smoldering Embrace,Fire,4,25
-HEAL,Inferno Renewal,Fire,3,18
-SPECIAL,Blazing Insight,Fire,2,DRAW,2,Draw 2 cards
-SPECIAL,Mana Burn,Fire,3,DEBUFF_MANA,2,Opponent loses 2 mana
-SPECIAL,Flame Barrier,Fire,3,SHIELD,1,Negate all damage next turn
-SPECIAL,Burning Rage,Fire,4,BUFF_DAMAGE,1.25,Increase your damage by 25%
-SPECIAL,Scorching Weakness,Fire,4,DEBUFF_INCOMING,1.25,Opponent takes 25% more damage
-ATTACK,Fireball,Fire,3,20
-ATTACK,Ember Strike,Fire,2,12
-ATTACK,Flame Shock,Fire,4,25
-ATTACK,Magma Burst,Fire,5,35
-ATTACK,Scorch,Fire,1,8
-HEAL,Flame Renewal,Fire,2,12
-HEAL,Smoldering Embrace,Fire,4,25
-ATTACK,Tidal Wave,Water,4,30
-ATTACK,Water Bolt,Water,2,15
-ATTACK,Drizzle,Water,1,6
-ATTACK,Hydro Pump,Water,5,34
-ATTACK,Surf,Water,3,20
-HEAL,Healing Waters,Water,2,15
-HEAL,Misty Recovery,Water,3,20
-HEAL,Aqua Blessing,Water,3,18
-SPECIAL,Ocean's Blessing,Water,3,DRAW,2,Draw 2 cards
-SPECIAL,Flux Drain,Water,3,DEBUFF_MANA,2,Opponent loses 2 mana
-SPECIAL,Water Shield,Water,3,SHIELD,1,Negate all damage next turn
-SPECIAL,Tidal Surge,Water,4,BUFF_DAMAGE,1.25,Increase your damage by 25%
-SPECIAL,Rainfall Weakness,Water,4,DEBUFF_INCOMING,1.25,Opponent takes 25% more damage
-ATTACK,Tidal Wave,Water,4,30
-ATTACK,Water Bolt,Water,2,15
-ATTACK,Drizzle,Water,1,6
-ATTACK,Hydro Pump,Water,5,34
-ATTACK,Surf,Water,3,20
-HEAL,Healing Waters,Water,2,15
-HEAL,Misty Recovery,Water,3,20
-ATTACK,Rock Smash,Earth,3,22
-ATTACK,Earthen Spear,Earth,2,14
-ATTACK,Quake,Earth,5,40
-ATTACK,Earth Crusher,Earth,4,30
-ATTACK,Boulder Bash,Earth,3,24
-HEAL,Stone Skin,Earth,2,10
-HEAL,Nature's Resilience,Earth,4,30
-HEAL,Earth Renewal,Earth,3,18
-SPECIAL,Terra Draw,Earth,3,DRAW,2,Draw 2 cards
-SPECIAL,Earth's Grasp,Earth,3,DEBUFF_MANA,2,Opponent loses 2 mana
-SPECIAL,Earth Ward,Earth,5,SHIELD,1,Negate all damage next turn
-SPECIAL,Stone Knell,Earth,4,BUFF_DAMAGE,1.25,Increase your damage by 25%
-SPECIAL,Quake Vulnerability,Earth,4,DEBUFF_INCOMING,1.25,Opponent takes 25% more damage
-ATTACK,Rock Smash,Earth,3,22
-ATTACK,Earthen Spear,Earth,2,14
-ATTACK,Quake,Earth,5,40
-ATTACK,Earth Crusher,Earth,4,30
-ATTACK,Boulder Bash,Earth,3,24
-HEAL,Stone Skin,Earth,2,10
-HEAL,Nature's Resilience,Earth,4,30
+
+SPECIAL,Inferno Insight,Fire,2,DRAW,3,Draw 3 cards
+SPECIAL,Char Burn,Fire,3,DEBUFF_MANA,3,Opponent loses 3 mana
+SPECIAL,Fire Aegis,Fire,4,SHIELD,1,Negate all damage next turn
+SPECIAL,Flare Boost,Fire,5,BUFF_DAMAGE,1.5,Increase your damage by 50%
+SPECIAL,Ember Weakness,Fire,5,DEBUFF_INCOMING,1.5,Opponent takes 50% more damage
+SPECIAL,Torrent Insight,Water,2,DRAW,3,Draw 3 cards
+SPECIAL,Current Drain,Water,3,DEBUFF_MANA,3,Opponent loses 3 mana
+SPECIAL,Aqua Aegis,Water,4,SHIELD,1,Negate all damage next turn
+SPECIAL,Riptide Boost,Water,5,BUFF_DAMAGE,1.5,Increase your damage by 50%
+SPECIAL,Ocean Weakness,Water,5,DEBUFF_INCOMING,1.5,Opponent takes 50% more damage
+SPECIAL,Geomancy Insight,Earth,2,DRAW,3,Draw 3 cards
+SPECIAL,Stone Drain,Earth,3,DEBUFF_MANA,3,Opponent loses 3 mana
+SPECIAL,Earth Aegis,Earth,4,SHIELD,1,Negate all damage next turn
+SPECIAL,Rock Boost,Earth,5,BUFF_DAMAGE,1.5,Increase your damage by 50%
+SPECIAL,Quake Weakness,Earth,5,DEBUFF_INCOMING,1.5,Opponent takes 50% more damage   
