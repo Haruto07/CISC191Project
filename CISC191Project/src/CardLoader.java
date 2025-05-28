@@ -12,6 +12,9 @@ public class CardLoader {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while((line = br.readLine()) != null) {
+                if (line.isEmpty()) {
+                    continue;
+                }
                 // format: type,name,element,mana,value,desc?
                 // e.g. ATTACK,Fireball,Fire,3,20
                 String[] p = line.split(",");
@@ -24,12 +27,11 @@ public class CardLoader {
                         break;
                     case "SPECIAL":
                         String et = p[4].toUpperCase();
-                        CardEffect.Type t;
+                        CardEffect.Type t = CardEffect.Type.valueOf(p[4]);
                         switch (et) {
                         case "DRAW":
                             t = CardEffect.Type.DRAW;
                             break;
-
                         case "DEBUFF_MANA":
                             t = CardEffect.Type.DEBUFF_MANA;
                             break;
@@ -45,6 +47,20 @@ public class CardLoader {
                         default:
                             throw new IllegalArgumentException("Unknown effect type: " + et);
                         }
+                        int manaCost = Integer.parseInt(p[3]);
+                        String name = p[1], elem = p[2];
+                        String desc = p.length > 6 ? String.join(",", Arrays.copyOfRange(p, 6, p.length)): "";
+                        CardEffect effect;
+                        if (t== CardEffect.Type.BUFF_DAMAGE || t == CardEffect.Type.DEBUFF_INCOMING) {
+                            double factor = Double.parseDouble(p[5]);
+                            effect = new CardEffect(t, (int)factor, desc);
+                        } 
+                        else {
+                            int val = Integer.parseInt(p[5]);
+                            effect = new CardEffect(t, val, desc);
+                        }
+                        list.add(new SpecialCard(name, elem, manaCost, effect));
+                        break;
                 }
             }
         } catch (IOException e) {

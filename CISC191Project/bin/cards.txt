@@ -1,4 +1,63 @@
-
+ATTACK,Fireball,Fire,3,20
+ATTACK,Ember Strike,Fire,2,12
+ATTACK,Flame Shock,Fire,4,25
+ATTACK,Magma Burst,Fire,5,35
+ATTACK,Scorch,Fire,1,8
+HEAL,Flame Renewal,Fire,2,12
+HEAL,Smoldering Embrace,Fire,4,25
+HEAL,Inferno Renewal,Fire,3,18
+SPECIAL,Blazing Insight,Fire,2,DRAW,2,Draw 2 cards
+SPECIAL,Mana Burn,Fire,3,DEBUFF_MANA,2,Opponent loses 2 mana
+SPECIAL,Flame Barrier,Fire,3,SHIELD,1,Negate all damage next turn
+SPECIAL,Burning Rage,Fire,4,BUFF_DAMAGE,1.25,Increase your damage by 25%
+SPECIAL,Scorching Weakness,Fire,4,DEBUFF_INCOMING,1.25,Opponent takes 25% more damage
+ATTACK,Fireball,Fire,3,20
+ATTACK,Ember Strike,Fire,2,12
+ATTACK,Flame Shock,Fire,4,25
+ATTACK,Magma Burst,Fire,5,35
+ATTACK,Scorch,Fire,1,8
+HEAL,Flame Renewal,Fire,2,12
+HEAL,Smoldering Embrace,Fire,4,25
+ATTACK,Tidal Wave,Water,4,30
+ATTACK,Water Bolt,Water,2,15
+ATTACK,Drizzle,Water,1,6
+ATTACK,Hydro Pump,Water,5,34
+ATTACK,Surf,Water,3,20
+HEAL,Healing Waters,Water,2,15
+HEAL,Misty Recovery,Water,3,20
+HEAL,Aqua Blessing,Water,3,18
+SPECIAL,Ocean's Blessing,Water,3,DRAW,2,Draw 2 cards
+SPECIAL,Flux Drain,Water,3,DEBUFF_MANA,2,Opponent loses 2 mana
+SPECIAL,Water Shield,Water,3,SHIELD,1,Negate all damage next turn
+SPECIAL,Tidal Surge,Water,4,BUFF_DAMAGE,1.25,Increase your damage by 25%
+SPECIAL,Rainfall Weakness,Water,4,DEBUFF_INCOMING,1.25,Opponent takes 25% more damage
+ATTACK,Tidal Wave,Water,4,30
+ATTACK,Water Bolt,Water,2,15
+ATTACK,Drizzle,Water,1,6
+ATTACK,Hydro Pump,Water,5,34
+ATTACK,Surf,Water,3,20
+HEAL,Healing Waters,Water,2,15
+HEAL,Misty Recovery,Water,3,20
+ATTACK,Rock Smash,Earth,3,22
+ATTACK,Earthen Spear,Earth,2,14
+ATTACK,Quake,Earth,5,40
+ATTACK,Earth Crusher,Earth,4,30
+ATTACK,Boulder Bash,Earth,3,24
+HEAL,Stone Skin,Earth,2,10
+HEAL,Nature's Resilience,Earth,4,30
+HEAL,Earth Renewal,Earth,3,18
+SPECIAL,Terra Draw,Earth,3,DRAW,2,Draw 2 cards
+SPECIAL,Earth's Grasp,Earth,3,DEBUFF_MANA,2,Opponent loses 2 mana
+SPECIAL,Earth Ward,Earth,5,SHIELD,1,Negate all damage next turn
+SPECIAL,Stone Knell,Earth,4,BUFF_DAMAGE,1.25,Increase your damage by 25%
+SPECIAL,Quake Vulnerability,Earth,4,DEBUFF_INCOMING,1.25,Opponent takes 25% more damage
+ATTACK,Rock Smash,Earth,3,22
+ATTACK,Earthen Spear,Earth,2,14
+ATTACK,Quake,Earth,5,40
+ATTACK,Earth Crusher,Earth,4,30
+ATTACK,Boulder Bash,Earth,3,24
+HEAL,Stone Skin,Earth,2,10
+HEAL,Nature's Resilience,Earth,4,30
 SPECIAL,Inferno Insight,Fire,2,DRAW,3,Draw 3 cards
 SPECIAL,Char Burn,Fire,3,DEBUFF_MANA,3,Opponent loses 3 mana
 SPECIAL,Fire Aegis,Fire,4,SHIELD,1,Negate all damage next turn
@@ -14,3 +73,41 @@ SPECIAL,Stone Drain,Earth,3,DEBUFF_MANA,3,Opponent loses 3 mana
 SPECIAL,Earth Aegis,Earth,4,SHIELD,1,Negate all damage next turn
 SPECIAL,Rock Boost,Earth,5,BUFF_DAMAGE,1.5,Increase your damage by 50%
 SPECIAL,Quake Weakness,Earth,5,DEBUFF_INCOMING,1.5,Opponent takes 50% more damage   
+ATTACK,Blaze Slash,Fire,3,22  
+ATTACK,Searing Wrath,Fire,5,38  
+ATTACK,Cinder Barrage,Fire,4,28  
+ATTACK,Charcoal Spear,Fire,2,14  
+ATTACK,Pyroclasm,Fire,6,45  
+ATTACK,Incendiary Bolt,Fire,3,18  
+ATTACK,Firebrand,Fire,4,26  
+ATTACK,Lava Crush,Fire,5,33  
+ATTACK,Emberstorm,Fire,3,20  
+ATTACK,Bubble Barrage,Water,3,18  
+ATTACK,Frost Spear,Water,4,24  
+ATTACK,Aqua Jet,Water,2,12  
+ATTACK,Wave Crash,Water,5,35  
+ATTACK,Tidal Slash,Water,4,30  
+ATTACK,Glacial Spike,Water,5,40  
+ATTACK,Hydro Lance,Water,3,20  
+ATTACK,Spray Shot,Water,2,10  
+ATTACK,Mud Slam,Earth,3,20  
+ATTACK,Stone Crush,Earth,4,30  
+ATTACK,Rock Spear,Earth,2,15  
+ATTACK,Earthquake,Earth,6,48  
+ATTACK,Boulder Throw,Earth,5,36  
+ATTACK,Quarry Strike,Earth,3,22  
+ATTACK,Dirt Tornado,Earth,4,28  
+ATTACK,Magma Core,Earth,5,34  
+HEAL,Warm Ember,Fire,3,16  
+HEAL,Flame Mend,Fire,4,20  
+HEAL,Ember Glow,Fire,2,10  
+HEAL,Fire Heart,Fire,5,28  
+HEAL,Solar Flare,Fire,6,35  
+HEAL,Rainfall Soak,Water,3,16  
+HEAL,Torrent Heal,Water,4,22  
+HEAL,Mist Rejuvenation,Water,2,12  
+HEAL,Ocean’s Embrace,Water,5,30  
+HEAL,Stone Mend,Earth,3,14  
+HEAL,Leaf Blossom,Earth,4,18  
+HEAL,Root Renewal,Earth,2,10  
+HEAL,Gaia’s Blessing,Earth,5,32  
