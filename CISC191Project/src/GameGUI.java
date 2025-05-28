@@ -125,7 +125,7 @@ public class GameGUI extends JFrame {
             btn.setIconTextGap(4);
             btn.setHorizontalTextPosition(SwingConstants.CENTER);
             btn.setVerticalTextPosition(SwingConstants.BOTTOM);
-            btn.setToolTipText(c.getDescription() + " (Element: " + c.getElementType() + ")");
+           btn.setToolTipText(c.getDescription()+ " (Element: " + c.getElementType()+  ", Mana: " + c.getManaCost() + ")");
             btn.setEnabled(pl == currentPlayer);
             int idx = i;
             btn.addActionListener(e -> {
@@ -162,7 +162,7 @@ public class GameGUI extends JFrame {
      */
     public void endTurn() {
         Player prev = (currentPlayer == p1) ? p1 : p2;
-        prev.resetOutgoingMultiplier();
+        prev.resetEndOfTurn();
 
         if (currentPlayer == p1) {
             if (singlePlayer) {
@@ -170,14 +170,12 @@ public class GameGUI extends JFrame {
             } 
             else {
                 currentPlayer = p2;
-                currentPlayer.setMana(10);
-                currentPlayer.drawCardsRecursively(1);
+                currentPlayer.drawCardsRecursively(2);
             }
         } 
         else {
             currentPlayer = p1;
-            currentPlayer.setMana(10);
-            currentPlayer.drawCardsRecursively(1);
+            currentPlayer.drawCardsRecursively(2);
         }
         updateAll();
     }

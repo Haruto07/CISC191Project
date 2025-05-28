@@ -36,7 +36,7 @@ public class CardEffect {
                 self.drawCardsRecursively(value);
                 break;
             case DEBUFF_MANA:
-                opponent.setMana(Math.max(0, opponent.getMana() - value));
+                opponent.debuffMana(value);
                 break;
             case SHIELD:
                 self.activateShield();

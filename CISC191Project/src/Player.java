@@ -6,7 +6,8 @@ public class Player {
     private String affinity;     
     private int health;
     private int mana;
-    private boolean shieldActive;                          
+    private boolean shieldActive;      
+    private boolean manaDebuffed = false;                    
     private double outgoingMultiplier;           
     private double incomingMultiplier;           
     private Deck deck;
@@ -71,26 +72,46 @@ public class Player {
             System.out.println(name + ": " + ex.getMessage());
         }
     }
+    
+    /**
+     * Purpose: Method to reset the end of turn effects
+     */
+    public void resetEndOfTurn() {
+        resetOutgoingMultiplier();
+        if (manaDebuffed) {
+            manaDebuffed = false;
+        } 
+        else {
+            mana = 10;
+        }
+    }
+
 
     /**
      * Purpose: Method to discard a card from the hand
      * @param idx index of the card in the hand
      */
     public void takeDamage(int dmg) {
-    if (shieldActive) {
-        shieldActive = false;
-        System.out.println(name + " blocked all damage with a shield!");
-        return;
-    }
-
-    // We already baked in incomingMultiplier on the caller side,
-    // but let’s also log and then reset it here.
-    // apply damage
+        if (shieldActive) {
+            shieldActive = false;
+            System.out.println(name + " blocked all damage with a shield!");
+            return;
+        }
     health = Math.max(0, health - dmg);
-    // then reset for next turn
     incomingMultiplier = 1.0;
     System.out.printf("%s now has %d health%n", name, health);
-}
+    }
+
+    /**
+     * Purpose: Method to debuff the player's mana
+     * @param amount amount of mana to reduce
+     */
+    public void debuffMana(int amount) {
+        mana = Math.max(0, mana - amount);
+        manaDebuffed = true;
+        System.out.printf("%s mana reduced by %d → now %d%n", name, amount, mana);
+    }
+
     /**
      * Purpose: Method to heal the player
      * @param amt amount of health to restore

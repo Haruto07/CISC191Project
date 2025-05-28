@@ -13,7 +13,7 @@ public class CardLoader {
             String line;
             while((line = br.readLine()) != null) {
                 line = line.trim();
-                if (line.isEmpty() || line.startsWith("#")) {
+                if (line.isEmpty()) {
                     continue;
                 }
                 // format: type,name,element,mana,value,desc?
