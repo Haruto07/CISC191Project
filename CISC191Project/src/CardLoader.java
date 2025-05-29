@@ -1,6 +1,18 @@
 import java.io.*;
 import java.util.*;
 
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: CardLoader is responsible for loading card data from a file into a list of Card objects.
+ * 
+ */
+
 public class CardLoader {
     /**
      * Purpose: Method to load cards from a file

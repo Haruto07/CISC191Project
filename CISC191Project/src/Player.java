@@ -1,4 +1,15 @@
-import java.io.*;
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: Player represents a player in the Card Clash game, managing their name, affinity, health, mana, shield status, and deck of cards. It provides methods for drawing cards, playing cards, taking damage, healing, and managing game mechanics like buffs and debuffs.
+ * 
+ */
+
 import java.util.*;
 
 public class Player {

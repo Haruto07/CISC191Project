@@ -1,3 +1,15 @@
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: HealCard represents a card in the Card Clash game that restores health to the player.
+ * 
+ */
+
 public class HealCard extends Card {
     private int healAmount;
 

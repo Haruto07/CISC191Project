@@ -2,6 +2,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
 
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * ChatGPT for image generation and code for ImageIcon scaling
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: GameGUI is the graphical user interface for the Card Clash game.
+ * 
+ */
+
 public class GameGUI extends JFrame {
     private Player p1, p2;
     private JProgressBar hpBar1, hpBar2;

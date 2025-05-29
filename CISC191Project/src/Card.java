@@ -1,3 +1,15 @@
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: Card is an abstract class that represents a card in the Card Clash game, defining common properties and methods for all cards.
+ * 
+ */
+
 public abstract class Card implements Playable {
     protected String name;
     protected String elementType;

@@ -1,5 +1,17 @@
 import java.util.*;
 
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: Deck represents a deck of cards in the Card Clash game, allowing for shuffling and drawing cards.
+ * 
+ */
+
 public class Deck {
     private List<Card> cards;
 

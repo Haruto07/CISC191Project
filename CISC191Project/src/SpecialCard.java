@@ -1,4 +1,15 @@
-// SpecialCard.java
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: SpecialCard represents a special card in the Card Clash game that has a unique effect.
+ * 
+ */
+
 public class SpecialCard extends Card {
     private CardEffect effect;
 

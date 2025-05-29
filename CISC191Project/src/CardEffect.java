@@ -1,3 +1,15 @@
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: CardEffect represents an effect that can be applied to a player or opponent in the Card Clash game.
+ * 
+ */
+
 public class CardEffect {
     public enum Type { DRAW,DEBUFF_MANA,SHIELD,BUFF_DAMAGE,DEBUFF_INCOMING } 
 

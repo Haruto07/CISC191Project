@@ -1,5 +1,16 @@
 import javax.swing.*;
 
+ /**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: GameEngine is the main class that initializes the game, loads cards, creates players, and starts the GUI.
+ * 
+ */
 
 public class GameEngine {
     public static Player player1, player2;

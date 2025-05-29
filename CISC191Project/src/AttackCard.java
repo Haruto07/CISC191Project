@@ -1,3 +1,15 @@
+/**
+ * Lead Author(s):
+ * @author Haruto Yunawan
+ * Other contributors:
+ * None
+ * References:
+ * Version/date: 5/29/2025
+ * 
+ * Responsibilities of class: AttackCard represents a card in the Card Clash game that deals damage to the opponent. It extends the Card class and implements the playEffect method to apply the card's effect.
+ * 
+ */
+
 public class AttackCard extends Card {
     private int damage;
 
@@ -47,6 +59,7 @@ public class AttackCard extends Card {
 
         opponent.takeDamage(dealt);
     }
+
     /**
      * Purpose: Method to get the type multiplier based on the attack and defense types
      * @param atk attack type
