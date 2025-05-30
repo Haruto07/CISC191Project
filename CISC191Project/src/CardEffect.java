@@ -31,6 +31,12 @@ public class CardEffect {
         this.description = description;
     }
 
+    /**
+     * Purpose: Constructor for the CardEffect class with a factor
+     * @param type type of the effect (DRAW, BUFF, DEBUFF)
+     * @param value value of the effect (amount to buff/debuff)
+     * @param description description of the effect
+     */
     public CardEffect(Type type, double value, String description) {
         this.type = type;
         this.factor = value;
